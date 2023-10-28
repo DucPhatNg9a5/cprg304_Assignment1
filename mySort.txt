@@ -1,0 +1,27 @@
+Bubble sort iterates through a list by comparing 2 neighboring elements, and switch their places if left one is bigger than right one. This process is repeated until the list is fully organized. 
+
+Bubble sort algorithm in pseudocode:
+
+n = array length
+
+BubbleSort(Array, n)
+{
+    for i = 0 to n-1
+    {
+        for j = 0 to n-2
+        {
+            if Array[j] > Array[j+1]
+            {
+                swap(Array[j], Array[j+1])
+            }
+        }
+    }
+}
+
+
+Numbers of operations performed in each step of the algorithm:
+
+1 assignment + n-1 (outer loop) * (n-2) (inner loop) + n * (n-1) (comparisons) + (number of swaps) operations
+
+Time Complexity: O(n^2)
+Space Complexity: O(1)
