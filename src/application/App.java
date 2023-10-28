@@ -47,6 +47,7 @@ public class App {
         System.out.println("sortType: " + sortType);
         System.out.println("sortAlgorithm: " + sortAlgorithm);
 
+        long startTime = System.currentTimeMillis(); // set current time
         //Sort shape list based on user input
         if (sortType.equalsIgnoreCase("v")) {
             if (sortAlgorithm.equalsIgnoreCase("b")) {
@@ -87,9 +88,30 @@ public class App {
         } else {
             System.out.println("Invalid sort type");
         }
+        
+        long endTime = System.currentTimeMillis();
 
-        for (Shape s : shapeArray) {
-            System.out.println(s);
+        if (sortType == "h") {
+            for (int i = 0; i < shapeArray.length; i += 1000) {
+                System.out.println(String.format("Sorted by %s at index %d using %s: %.2f", sortType, i, sortAlgorithm, shapeArray[i].getHeight()));
+            }
+        } else if (sortType == "v") {
+            for (int i = 0; i < shapeArray.length; i += 1000) {
+                System.out.println(String.format("Sorted by %s at index %d using %s: %.2f", sortType, i, sortAlgorithm, shapeArray[i].calcVolume()));
         }
+        } else if (sortType == "a") {
+            for (int i = 0; i < shapeArray.length; i += 1000) {
+                System.out.println(String.format("Sorted by %s at index %d using %s: %.2f", sortType, i, sortAlgorithm, shapeArray[i].calcBaseArea()));        }
+        } else {
+            System.out.println("Please enter valid comparing type");
+        }
+
+        // for (Shape s : shapeArray) {
+        //     System.out.println(s);
+        // }
+
+        long elapsedTime = endTime - startTime;
+        System.out.println("\nShape array length: " + shapeArray.length); // test code
+        System.out.println("\nEXECUTION TIME: " + elapsedTime + " milliseconds\n"); // print algotithm execution time
     }
 }
